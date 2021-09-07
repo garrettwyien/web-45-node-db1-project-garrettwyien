@@ -15,11 +15,11 @@ const create = async (account) => {
   return 'create'
 }
 
-const updateById = (id, account) => {
+const updateById = async (id, account) => {
   // DO YOUR MAGIC
 }
 
-const deleteById = id => {
+const deleteById = async (id) => {
   // DO YOUR MAGIC
 }
 
