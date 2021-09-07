@@ -18,7 +18,7 @@ const updateById = (id, account) => {
 }
 
 const deleteById = (id) => {
-  // DO YOUR MAGIC
+  return db('accounts').where('id', id).del();
 }
 const getByName = (name) =>{
   return db('accounts').where('name', name.trim()).first()
