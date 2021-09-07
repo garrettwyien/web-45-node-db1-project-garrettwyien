@@ -1,13 +1,18 @@
-const getAll = () => {
+const db = require('../../data/db-config')
+
+const getAll = async () => {
   // DO YOUR MAGIC
+  return db('accounts')
 }
 
-const getById = id => {
+const getById = async (id) => {
   // DO YOUR MAGIC
+  return db('posts').where('id', id).first()
 }
 
-const create = account => {
+const create = async (account) => {
   // DO YOUR MAGIC
+  return 'create'
 }
 
 const updateById = (id, account) => {
