@@ -15,17 +15,22 @@ router.get('/:id', checkAccountId, async (req, res, next) => {
 })
 
 router.post('/', checkAccountPayload, checkAccountNameUnique, async (req, res, next) => {
-  Accounts.create(req.body)
-  .then(newAccount=>{
-    res.status(201).json(newAccount)
+  const newAccount = { 
+    name: req.body.name.trim(),
+    budget: req.body.budget, 
+  }
+  Accounts.create(newAccount)
+  .then(obj=>{
+    res.status(201).json(obj)
   })
   .catch(err =>{
     next(err)
   })
 })
 
-router.put('/:id', async (req, res, next) => {
-  // DO YOUR MAGIC
+router.put('/:id', checkAccountId, checkAccountPayload, async (req, res, next) => {
+  const update = await Accounts.updateById(req.params.id, req.body)
+  res.json(update)
 });
 
 router.delete('/:id', checkAccountId, async (req, res, next) => {
